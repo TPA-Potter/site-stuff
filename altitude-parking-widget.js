@@ -11,7 +11,7 @@ if (Date.prototype.addHours == undefined) {
   var defaults = {
       // inputFormat: "J M Y H:i",
       inputFormat: "J M Y",
-      dateFormat: 'Y-m-d',
+      dateFormat: 'm-d-Y',
       timeFormat: 'H:i',
       dowFormat: "l",
       leadTime: 5,
