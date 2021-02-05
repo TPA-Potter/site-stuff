@@ -20,7 +20,7 @@ if (Date.prototype.addHours == undefined) {
       defaultArrMins: 00,
       defaultDepHours: 17,
       defaultDepMins: 00,
-      minuteIncrement: 20,
+      minuteIncrement: 60,
       time_24hr: false
   };
 
