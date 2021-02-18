@@ -85,7 +85,7 @@
 }
 .altitude-parking__date-content:after {
   position: absolute;
-  top: 0;
+  top: -.1em;
   right: 0.3em;
   display: inline-block;
   font-family: "fontello";
