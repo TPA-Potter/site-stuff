@@ -10,6 +10,7 @@ if (Date.prototype.addHours == undefined) {
 
   var defaults = {
       // inputFormat: "J M Y H:i",
+      allowInput: false,
       inputFormat: "J M Y",
       dateFormat: 'm/d/Y',
       timeFormat: 'H:i',
