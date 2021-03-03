@@ -16,7 +16,7 @@ if (Date.prototype.addHours == undefined) {
       timeFormat: 'H:i',
       dowFormat: "l",
       leadTime: 5,
-      defaultDuration: 8,
+      defaultDuration: 5,
       defaultArrHours: 6,
       defaultArrMins: 00,
       defaultDepHours: 14,
@@ -45,7 +45,7 @@ if (Date.prototype.addHours == undefined) {
 
     var minLeadTime = (new Date()).addHours(this.options.leadTime);
 
-    var defaultArrDate = new Date();
+    var defaultArrDate = (new Date()).fp_incr(1);
     defaultArrDate.setHours(this.options.defaultArrHours, this.options.defaultArrMins)
 
     if (minLeadTime >= defaultArrDate) {
