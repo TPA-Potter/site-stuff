@@ -17,9 +17,9 @@ if (Date.prototype.addHours == undefined) {
       dowFormat: "l",
       leadTime: 5,
       defaultDuration: 8,
-      defaultArrHours: 8,
+      defaultArrHours: 6,
       defaultArrMins: 00,
-      defaultDepHours: 17,
+      defaultDepHours: 14,
       defaultDepMins: 00,
       minuteIncrement: 20,
       time_24hr: false
