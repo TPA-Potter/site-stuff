@@ -43,9 +43,10 @@ if (Date.prototype.addHours == undefined) {
     this.$departureTime = $('[data-departure-time]', this.$form)
     this.$departureDow = $('[data-departure-dow]', this.$form)
 
-    var minLeadTime = (new Date()).addHours(this.options.leadTime);
+    var minLeadTime = new Date();
 
-    var defaultArrDate = (new Date()).fp_incr(1);
+    var defaultArrDate = new Date(minLeadTime);
+    defaultArrDate.setDate(defaultArrDate.getDate() + 1)
     defaultArrDate.setHours(this.options.defaultArrHours, this.options.defaultArrMins)
 
     if (minLeadTime >= defaultArrDate) {
