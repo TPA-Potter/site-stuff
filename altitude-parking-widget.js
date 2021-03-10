@@ -91,7 +91,8 @@ if (Date.prototype.addHours == undefined) {
     this.departurePicker = this.$departureDateTime[0]._flatpickr;
 
     $('[data-arrival-toggle]', this.$form).on('click', function() {
-      self.arrivalPicker.open()
+      self.arrivalPicker.open();
+      $('.flatpickr-minute').attr('readonly', true);	
     })
 
     $('[data-departure-toggle]', this.$form).on('click', function() {
