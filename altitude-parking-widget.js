@@ -64,7 +64,7 @@ if (Date.prototype.addHours == undefined) {
       minuteIncrement: this.options.minuteIncrement,
       time_24hr: this.options.time_24hr,
       defaultDate: defaultArrDate,
-      minDate: minLeadTime,
+      minDate: new Date().fp_incr(1),
       maxDate: new Date().fp_incr(365),
       onChange: function(selectedDates, dateStr, instance) {
         self.arrivalDateChanged(selectedDates[0])
