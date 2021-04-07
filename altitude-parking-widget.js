@@ -1,28 +1,14 @@
-if (Date.prototype.addHours == undefined) {
-  Date.prototype.addHours = function(h) {
-    this.setTime(this.getTime() + (h*60*60*1000));
-    return this;
-  }
-}
 
 (function(jQuery){
   $ = jQuery.noConflict();
 
-  var defaults = {
-      // inputFormat: "J M Y H:i",
-      allowInput: false,
+  var defaults = { 
       inputFormat: "J M Y",
       dateFormat: 'm/d/Y',
-      timeFormat: 'H:i',
       dowFormat: "l",
-      leadTime: 5,
-      defaultDuration: 5,
-      defaultArrHours: 6,
-      defaultArrMins: 00,
-      defaultDepHours: 14,
-      defaultDepMins: 00,
-      minuteIncrement: 20,
-      time_24hr: false
+      defaultDuration: 5
+      
+      
   };
 
   var AltitudeParkingWidget = function(form, options)
@@ -47,38 +33,31 @@ if (Date.prototype.addHours == undefined) {
 
     var defaultArrDate = new Date(minLeadTime);
     defaultArrDate.setDate(defaultArrDate.getDate() + 1)
-    defaultArrDate.setHours(this.options.defaultArrHours, this.options.defaultArrMins)
+   
 
     if (minLeadTime >= defaultArrDate) {
         defaultArrDate = (new Date()).fp_incr(1);
-        defaultArrDate.setHours(this.options.defaultArrHours, this.options.defaultArrMins)
-        while (minLeadTime >= defaultArrDate)
-        {
-          defaultArrDate = new Date(defaultArrDate.getTime() + this.options.minuteIncrement * 60000);
-        }
+        
     }
 
-    this.$arrivalDateTime.flatpickr({
-      enableTime: true,
+    this.$arrivalDateTime.flatpickr({	
+      
       dateFormat: this.options.inputFormat,
-      minuteIncrement: this.options.minuteIncrement,
-      time_24hr: this.options.time_24hr,
+      
       defaultDate: defaultArrDate,
       minDate: new Date().fp_incr(1),
-      maxDate: new Date().fp_incr(365),
+      maxDate: new Date().fp_incr(365),	  
       onChange: function(selectedDates, dateStr, instance) {
         self.arrivalDateChanged(selectedDates[0])
       }
     });
+	
 
     var defaultDepDate = defaultArrDate.fp_incr(this.options.defaultDuration);
-    defaultDepDate.setHours(this.options.defaultDepHours, this.options.defaultDepMins)
 
     this.$departureDateTime.flatpickr({
-      enableTime: true,
+      
       dateFormat: this.options.inputFormat,
-      minuteIncrement: this.options.minuteIncrement,
-      time_24hr: this.options.time_24hr,
       defaultDate: defaultDepDate,
       minDate: defaultArrDate,
       maxDate: new Date().fp_incr(365),
@@ -92,7 +71,6 @@ if (Date.prototype.addHours == undefined) {
 
     $('[data-arrival-toggle]', this.$form).on('click', function() {
       self.arrivalPicker.open();
-      $('.flatpickr-minute').attr('step', '20');
     })
 
     $('[data-departure-toggle]', this.$form).on('click', function() {
@@ -128,11 +106,11 @@ if (Date.prototype.addHours == undefined) {
     arrDate = arrDate || this.arrivalPicker.selectedDates[0]
     depDate = depDate || this.departurePicker.selectedDates[0]
 
-    this.$arrivalTime.not(':input').text(flatpickr.formatDate(arrDate, this.options.timeFormat))
-    this.$arrivalTime.val(flatpickr.formatDate(arrDate, this.options.timeFormat))
+    
+    
 
-    this.$departureTime.not(':input').text(flatpickr.formatDate(depDate, this.options.timeFormat))
-    this.$departureTime.val(flatpickr.formatDate(depDate, this.options.timeFormat))
+    //this.$departureTime.not(':input').text(flatpickr.formatDate(depDate, this.options.timeFormat))
+    //this.$departureTime.val(flatpickr.formatDate(depDate, this.options.timeFormat))
 
     this.$arrivalDate.val(flatpickr.formatDate(arrDate, this.options.dateFormat))
     this.$departureDate.val(flatpickr.formatDate(depDate, this.options.dateFormat))
