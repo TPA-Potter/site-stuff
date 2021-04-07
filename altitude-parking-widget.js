@@ -94,8 +94,7 @@ if (Date.prototype.addHours == undefined) {
 
     $('[data-arrival-toggle]', this.$form).on('click', function() {
       self.arrivalPicker.open();
-      $('.flatpickr-minute').attr('readonly', true);
-      $('.flatpickr-hour').attr('readonly', true);
+      $('.flatpickr-minute').attr('step', '20');
     })
 
     $('[data-departure-toggle]', this.$form).on('click', function() {
